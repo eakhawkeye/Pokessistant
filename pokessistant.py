@@ -190,7 +190,7 @@ def pokemon_add(pokemon_name, pokemon_nickname, pokemon_official, lst_add_types,
     dct_pokemon = build_pokemon(pokemon_name.title(), lst_add_types, lst_add_moves, pokemon_nickname.title(), pokemon_official.title())
     dct_pokedex.update(dct_pokemon)
     save(shelve_file, shelve_pokedex, dct_pokedex)
-    print('ADDED %s, to pokdex %s:%s' % (pokemon_name, shelve_file, shelve_pokedex))
+    print('ADDED %s to your pokedex!' % (pokemon_name))
     
     return load(shelve_file, shelve_pokedex)
 
@@ -203,7 +203,7 @@ def pokemon_remove(pokemon_name, dct_pokedex, shelve_file, shelve_pokedex):
     if pokemon_key:
         del dct_pokedex[pokemon_key]
         save(shelve_file, shelve_pokedex, dct_pokedex)
-        print('REMOVED %s, from pokdex %s:%s' % (pokemon_name, shelve_file, shelve_pokedex))
+        print('REMOVED %s from your pokdex' % (pokemon_name))
 
     return load(shelve_file, shelve_pokedex)
 
@@ -297,11 +297,11 @@ def compute_encounter_score(dct_results, dct_pokedex):
     # A pairint of attributes
     lst_attr = [ ('types', glb_offense), ('moves', glb_defense) ]
 
+    # Let's calculate!!!!
     # Iterate {pokemon: {}}
     for pokemon_key in dct_pokedex:
         running_score = 0
-
-        # Iterate through lst [ (pokemon, target), (pokemon, target)]
+        # Iterate through lst [ (pokemon, target), (pokemon, target) ]
         for poke_attr, target_position in lst_attr:
             # iterate {pokemon: {types:[], moves:{}}}
             for poke_type in dct_pokedex[pokemon_key][poke_attr]:
