@@ -356,7 +356,6 @@ def print_recommendations(dct_tally):
             print('\t[%d] Ideal: %s' % (tally_key, dct_tally[tally_key]))
         elif tally_key > 11:
             print('\t[%d] Good : %s' % (tally_key, dct_tally[tally_key]))
-    print('')
 
 
 def main():
@@ -468,9 +467,14 @@ def main():
     # Combine types aand output
     if len(lst_query_types) > 0:
         dct_results = compute_combination(lst_query_types)
-        dct_tally = compute_encounter_score(dct_results, dct_pokedex)
         print_results(dct_results)
-        print_recommendations(dct_tally)
+
+        # Generate recommendations if pokedex is populated
+        if len(dct_pokedex.keys()) > 0:
+            dct_tally = compute_encounter_score(dct_results, dct_pokedex)
+            print_recommendations(dct_tally)
+        
+        print()
     
 
 if __name__ == "__main__":
