@@ -84,7 +84,7 @@ ADDED cinderace to your pokedex!
 	Cinderace: Cinderace Cinderace types['fire'] moves['fire', 'fighting', 'normal']
 ```
 
-Pokedex: Listing
+Pokedex: Listing all or by pokemon name
 ```
 -$ pokessistant --list
 Pokedex pokedex from /home/username/.pokemon.shelf:
@@ -104,6 +104,9 @@ Pokedex pokedex from /home/username/.pokemon.shelf:
 	Lucario: Lucario Lucario types['fighting', 'steel'] moves['steel', 'dragon', 'normal', 'fighting']
 	Glaceon: Glaceon Glaceon types['ice'] moves['ice', 'psychic', 'normal']
 	Cinderace: Cinderace Cinderace types['fire'] moves['fire', 'fighting', 'normal']
+
+-$ pokessistant togekiss --list
+	Snip: Snip Togekiss types['fairy', 'flying'] moves['rock', 'fairy', 'flying', 'water']
 ```
 
 Pokedex: Removing a pokemon
@@ -117,6 +120,31 @@ Pokedex: Updating pokemon data (move types example)
 -$ pokessistant inteleon -m water bug grass
 ADDED Inteleon to your pokedex!
 	Inteleon: Inteleon Inteleon types['water'] moves['water', 'bug', 'grass']
+```
+
+Multiple: You can both analyze an encounter while adding, removing, or listing pokemon from your pokedex
+```
+-$ pokessistant fire galvantula grass -t bug electric -m bug dark electric normal
+ADDED galvantula to your pokedex!
+	Galvantula: Galvantula Galvantula types['bug', 'electric'] moves['bug', 'dark', 'electric', 'normal']
+
+ Attack - fire
+    [strong] grass, ice, bug, steel
+      [weak] fire, water, rock, dragon
+
+ Attack - grass
+    [strong] water, ground, rock
+      [weak] fire, grass, poison, flying, bug, dragon
+
+Defense - combo
+    [strong] electric, grass, steel, fairy
+      [weak] poison, flying, rock
+
+Recommendations:
+	[34] Ideal: ['Eternatus']
+	[23] Ideal: ['Cinderace']
+	[15] Good : ['Snip']
+	[13] Good : ['Coalossal']
 ```
 
 
