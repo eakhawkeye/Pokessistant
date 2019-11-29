@@ -172,8 +172,8 @@ def pokemon_add(pokemon_name, pokemon_nickname, pokemon_official, lst_add_types,
     pokemon_key = pokedex_get_key(pokemon_name, dct_pokedex)
     if pokemon_key:
         pokemon_name = pokemon_key
-        pokemon_nickname = dct_pokedex[pokemon_name]['nickname']
-        pokemon_official = dct_pokedex[pokemon_name]['official']
+        pokemon_nickname = dct_pokedex[pokemon_name]['nickname'] if not pokemon_nickname else pokemon_nickname
+        pokemon_official = dct_pokedex[pokemon_name]['official'] if not pokemon_official else pokemon_official
         lst_add_types = dct_pokedex[pokemon_name]['types'] if not lst_add_types else lst_add_types
         lst_add_moves = dct_pokedex[pokemon_name]['moves'] if not lst_add_moves else lst_add_moves
     else:
@@ -442,7 +442,7 @@ def main():
                         )
 
     # if changes need to be made, make this first
-    if pokemon_name and (lst_add_types or lst_add_moves):
+    if pokemon_name and (lst_add_types or lst_add_moves or pokemon_nickname or pokemon_official):
         dct_pokedex = pokemon_add(
                             pokemon_name, 
                             pokemon_nickname, 
